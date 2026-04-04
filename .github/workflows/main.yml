@@ -1,0 +1,36 @@
+name: simple_website;
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Code
+        uses: actions/checkout@v3
+
+      - name: check if html file exist
+        run: if [ -f index.html ]; then
+            echo "index.html found ✅"
+          else
+            echo "index.html not found ❌"
+            exit 1
+          fi
+
+            if [ -f index.html ]; then
+            echo "styles.css found ✅"
+          else
+            echo "styles.css not found ❌"
+            exit 1
+          fi
+
+            if [ -f index.html ]; then
+            echo "script.js found ✅"
+          else
+            echo "script.js not found ❌"
+            exit 1
+          fi
