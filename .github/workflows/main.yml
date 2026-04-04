@@ -17,20 +17,20 @@ jobs:
         run: if [ -f index.html ]; then
             echo "index.html" found ✅"
           else
-            echo "index.html" not found ❌"
+            echo "index.html" not found"
             exit 1
           fi
 
-            if [ -f index.html ]; then
+            if [ -f styles.css ]; then
             echo "styles.css" found ✅"
           else
-            echo "styles.css" not found ❌"
-            exit 1
+            echo "styles.css" not found"
+            exit 2
           fi
 
-            if [ -f index.html ]; then
+            if [ -f script.js ]; then
             echo "script.js" found ✅"
           else
-            echo "script.js" not found ❌"
-            exit 1
+            echo "script.js" not found"
+            exit 3
           fi
