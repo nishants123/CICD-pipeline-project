@@ -2,6 +2,6 @@
   "name": "cicd-project",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo Building complete"
+    "build": "node build.js"
   }
 }
