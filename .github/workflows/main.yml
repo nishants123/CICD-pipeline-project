@@ -1,11 +1,16 @@
 name: simple_website;
 
+# permision for github pages deployment 
+
 permissions: write-all
+# WHEN TO RUN THE WORKFLOW
+
 on: 
   push:
     branches:
       - main
 
+#CI
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -32,7 +37,9 @@ jobs:
             else
               echo "script.js not found ❌"
               exit 1
-            fi    
+            fi 
+            
+# CD ON GITHUB PAGES   
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
