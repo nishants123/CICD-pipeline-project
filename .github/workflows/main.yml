@@ -13,7 +13,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+# CI TESTS
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
             echo "script.js not found ❌"
             exit 1
           fi
-
+# Create dist directory and copy files
       - name: Create dist directory and copy files
         run: |
           mkdir -p dist
@@ -46,9 +46,10 @@ jobs:
           cp styles.css dist/
           cp script.js dist/
           echo "Files copied to dist ✅"
-
+# Deploy to GitHub Pages(CD)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+# from dist folder to push in gh-pages branch
