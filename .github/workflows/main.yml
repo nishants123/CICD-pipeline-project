@@ -1,47 +1,54 @@
-name: simple_website;
+name: simple_website
 
-# permision for github pages deployment 
-
+# Permission for github pages deployment 
 permissions: write-all
-# WHEN TO RUN THE WORKFLOW
 
+# WHEN TO RUN THE WORKFLOW
 on: 
   push:
     branches:
       - main
 
-#CI
+# CI/CD
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout Code
+      - name: Checkout Code
         uses: actions/checkout@v3
+
       - name: Check if files exist
         run: |
-            if [ -f index.html ]; then
-              echo "index.html found ✅"
-            else
-              echo "index.html not found ❌"
-              exit 1
-            fi
-            if [ -f styles.css ]; then
-              echo "styles.css found ✅"
-            else
-              echo "styles.css not found ❌"
-              exit 1
-            fi
-            if [ -f script.js ]; then
-              echo "script.js found ✅"
-            else
-              echo "script.js not found ❌"
-              exit 1
-            fi 
-            
-# CD ON GITHUB PAGES   
+          if [ -f index.html ]; then
+            echo "index.html found ✅"
+          else
+            echo "index.html not found ❌"
+            exit 1
+          fi
+          if [ -f styles.css ]; then
+            echo "styles.css found ✅"
+          else
+            echo "styles.css not found ❌"
+            exit 1
+          fi
+          if [ -f script.js ]; then
+            echo "script.js found ✅"
+          else
+            echo "script.js not found ❌"
+            exit 1
+          fi
+
+      - name: Create dist directory and copy files
+        run: |
+          mkdir -p dist
+          cp index.html dist/
+          cp styles.css dist/
+          cp script.js dist/
+          echo "Files copied to dist ✅"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist 
+          publish_dir: ./dist
