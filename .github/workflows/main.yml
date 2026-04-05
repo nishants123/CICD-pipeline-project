@@ -8,18 +8,21 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 # CI/CD
 # select VM for running the workflow
 jobs:
-  deploy:
+  Build_and_Deploy:
     runs-on: ubuntu-latest
 
 # get repo in VM machine
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        
+
 # Test the workflow(CI)
       - name: Check if files exist
         run: |
