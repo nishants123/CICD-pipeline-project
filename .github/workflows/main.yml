@@ -15,7 +15,7 @@ on:
 # CI/CD
 # select VM for running the workflow
 jobs:
-  deploy:
+  Build_and_Deploy:
     runs-on: ubuntu-latest
 
 # get repo in VM machine
